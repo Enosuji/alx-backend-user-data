@@ -1,37 +1,39 @@
-Tasks
-0. Regex-ing
-mandatory
-Write a function called filter_datum that returns the log message obfuscated:
+# Personal Data Security Project
 
-Arguments:
-fields: a list of strings representing all fields to obfuscate
-redaction: a string representing by what the field will be obfuscated
-message: a string representing the log line
-separator: a string representing by which character is separating all fields in the log line (message)
-The function should use a regex to replace occurrences of certain field values.
-filter_datum should be less than 5 lines long and use re.sub to perform the substitution with a single regex.
-1. Log formatter
-mandatory
-Copy the following code into filtered_logger.py.
+This project is dedicated to the protection and secure handling of Personally Identifiable Information (PII). It covers various aspects of data security, including obfuscating PII fields in logs, encrypting passwords, and ensuring secure database authentication using environment variables.
 
-import logging
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Learning Objectives](#learning-objectives)
+- [Requirements](#requirements)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Data Security](#data-security)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+The project's primary focus is on safeguarding personal data, commonly known as Personally Identifiable Information (PII). PII includes sensitive information that, if exposed, can pose significant risks to individuals. This project addresses the need to protect PII in various contexts and provides solutions for secure data management.
+
+## Learning Objectives
+
+By the end of this project, you will be able to:
+
+- Recognize examples of Personally Identifiable Information (PII) and understand its significance.
+- Implement a log filter that obfuscates PII fields in log messages to protect sensitive information.
+- Encrypt passwords and validate input passwords to enhance user authentication security.
+- Authenticate to a database using environment variables, ensuring the security of sensitive database credentials.
+
+## Requirements
+
+- **Operating System**: Ubuntu 18.04 LTS
+- **Python Version**: Python 3.7
+- **Coding Style**: Pycodestyle (PEP 8) style (version 2.5)
+
+## Project Structure
+
+The project directory includes various files and components to address personal data security:
 
 
-class RedactingFormatter(logging.Formatter):
-    """ Redacting Formatter class
-        """
-
-    REDACTION = "***"
-    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
-    SEPARATOR = ";"
-
-    def __init__(self):
-        super(RedactingFormatter, self).__init__(self.FORMAT)
-
-    def format(self, record: logging.LogRecord) -> str:
-        NotImplementedError
-Update the class to accept a list of strings fields constructor argument.
-
-Implement the format method to filter values in incoming log records using filter_datum. Values for fields in fields should be filtered.
-
-DO NOT extrapolate FORMAT manually. The format method should be less than 5 lines long.
